@@ -1,0 +1,17 @@
+.update-form{
+    width:500px;
+    background-color: #D6EAF8 ;
+}
+
+
+
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: left;
+  }
+
+  input, select{
+    padding-left:5px;
+    font-size:14px;
+  }

@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Collateral Details {% endblock title %}
+{% block css %}  <link rel="stylesheet" href="{% static 'css/collateral.css' %} "> {% endblock css %}
+
+{% block bodycontent %}
+
+<div class="container px-4">
+  <div class="row gx-4">
+    <div class="col-5 mt-4">
+
+      <div class="text-center text-success fs-6 text-decoration-underline">Collateral Details</div>
+      <form action=" " method="POST" class="text-center py-2 border border-primary mt-2">
+          {% csrf_token %}
+        <label for="plot_no" class="">Plot Number:</label>
+        <input type="text" class="justify-content-end" name="plot_no"  maxlength="200"  id="plot_no"style="width: 200px";><br>                          
+        <label for="plot_owner">Owner Name:</label>
+        <input type="text" name="plot_owner"  maxlength="100" id="plot_owner"style="width: 200px";><br>                
+        <label for="plot_add">Plot Address:</label>
+        <input type="text" name="plot_add"  maxlength="100" id="plot_add"style="width: 200px";> <br>               
+        <label for="valuator">Valuator Name:</label>
+        <input type="text" name="valuator"  maxlength="50" id="valuator"style="width: 200px";>  <br>                
+        <label for="distress_amt">Distress Value of Land:</label>
+        <input type="text" name="distress_amt"  placeholder="million" maxlength="100" id="distress_amt"style="width: 200px";><br>
+        <label for="margin">Margin (%):</label>
+        <input type="text" name="margin" class="text-danger" maxlength="20"  id="margin"style="width: 200px";><br><br>
+        
+        <p class="text-center text-decoration-underline text-danger">Building Details (Optional)</p>
+       
+        <label for="building_value">Building Value:</label>
+        <input type="text" name="building_value" placeholder="million" id="building_value"style="width: 200px";><br>
+        <label for="building_storey">Building Storey:</label>
+        <input type="text" name="building_storey" id="building_storey"style="width: 200px";><br><br>
+
+       <p class="text-center text-decoration-underline text-danger">Already Mortgaged Collateral (Optional)</p>
+
+       <label for="mortgaged_amt">Mortgaged Value:</label>
+       <input type="text" name="mortgaged_amt" placeholder="million" id="mortgaged_amt"style="width: 200px";> <br><br>
+      
+        <input type="submit" value="submit" class="text-center text-dark">
+
+    </div>
+    <div class="col-6 mt-4">
+      <p class="text-center text-success fs-6 text-decoration-underline ">Collateral Remarks</p>
+        {% if plot_no %}
+        
+        {% if flag == 1 %}
+          <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger"> 
+          The proposed collateral land having plot no. {{plot_no}} is registered in the name of M/S 
+          {{plot_owner}} and is located at {{plot_add}}. The distress value of this land and a 
+          {{building_storey}} storey RCC building that has been constructed on the same plot is 
+          Rs.{{distress_amt}} million and Rs.{{building_value}} million respectively, altogether 
+          Rs.{{total_amt}} million according to the valuation report prepared by the registered valuator M/S 
+          {{valuator}}. This property has been proposed as a collateral backup, amounting to Rs.{{proposed_amt}} million 
+          after allowing {{margin}}% margin on the total distress value. 
+          </p>    
+      
+        {% elif flag != None %}
+          <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger">   
+          The proposed collateral land having plot number {{plot_no}} is registered in the name of M/S {{plot_owner}} 
+          and is located at {{plot_add}}. The distress value of this land is Rs.{{distress_amt}} million according to 
+          the valuation report prepared by the registered valuator M/S {{valuator}}. This property has been already 
+          mortgaged in favor of bank at Rs.{{mortgaged_amt}} million after deducting {{old_margin}}% margin on the total 
+          distress value and shall continue as a security collateral backup.
+          </p>
+
+        {% else %}  
+          <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger"> 
+          The proposed collateral land having plot number {{plot_no}} is registered in the name of M/S {{plot_owner}} 
+          and is located at {{plot_add}}. The distress value of this land is Rs.{{distress_amt}} million according to 
+          the valuation report prepared by the registered valuator M/S {{valuator}}. This property shall be mortgage in 
+          favor of bank at Rs.{{proposed_amt}} million after deducting {{margin}}% margin on the total distress value 
+          after the approval of proposed credit facility.
+          </p>
+      
+        {% endif %} 
+        <div class="mx-auto"><button type="button" onclick="ColDetailCopy()" class="btn btn-warning btn-sm mx-auto">Copy</button></div>
+        <script>
+          function ColDetailCopy() {
+              /* Get the text field */
+              var copyText = document.getElementById("ColDetail");
+  
+              /* Select the text field */
+              var range = document.createRange();
+              range.selectNode(copyText);
+              window.getSelection().removeAllRanges(); // Clear previous selection
+              window.getSelection().addRange(range);
+  
+              /* Copy the text inside the text field */
+              document.execCommand("copy");
+  
+              /* Alert the copied text */
+              alert("Paragraph copied to clipboard!");
+          }
+      </script>
+      {% else %}  
+        <p class="text-center mt-5 text-danger border border-primary p-5">Enter the Collateral details for Collateral Remarks !!!</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+   
+{% endblock bodycontent %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ClientUpdate {% endblock title %}
+
+{% block bodycontent %}
+<div class="container">
+    <h3>Update Record</h3>
+<form action="" method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <input type="submit" value="Update" class="btn btn-danger">
+</form>
+</div>
+                                           
+{% endblock bodycontent %}

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ClientUpdate {% endblock title %}
+
+{% block bodycontent %}
+
+<div class="container my-4">
+    <form class="row g-3"action="" method="POST">
+        {% csrf_token %} 
+    <div class="row border border-primary">
+      <div class="col mb-3">
+        <p class="text-center text-danger mt-2">Borrower/Location/Establishment</p>
+            <hr color="red">
+        <label for="id_name">Name of Firm:</label><br>
+        <input type="text" name="name" class="" maxlength="300" value="{{object.name}}" id="id_name" style="width: 200px";><br>
+        <label for="id_pro_name">Name of Proprietor:</label><br>
+        <input type="text" name="pro_name" maxlength="200" value="{{object.pro_name}}" id="id_pro_name" style="width: 200px";> <br>
+        <label for="id_address">Address of Firm:</label> <br>
+        <input type="text" name="address" class="" maxlength="150" value="{{object.address}}" id="id_address" style="width: 200px";>  <br>                      
+        <label for="id_iro_address">PAN Registered Location:</label><br>
+        <input type="text" name="iro_address" class="" maxlength="50" value="{{object.iro_address}}" id="id_iro_address"style="width: 200px";><br>
+        <label for="id_iro_date">PAN Registered Date:</label><br>
+        <input type="text" name="iro_date" class="" maxlength="15" value="{{object.iro_date}}" id="id_iro_date"style="width: 200px";><br>
+        <label for="id_smi_address">Gharelu Registered Location:</label><br>
+        <input type="text" name="smi_address" class="" maxlength="150" value="{{object.smi_date}}" id="id_smi_address"style="width: 200px";><br>          
+        <label for="id_smi_date">Gharelu Registered date:</label><br>
+        <input type="text" name="smi_date" class="" maxlength="15" value="{{object.id_smi}}" id="id_smi_date"style="width: 200px";> <br>                     
+      </div>
+      
+      <div class="col">
+        <p class="text-center text-danger mt-2">Firm/Business/Detail</p>
+        <hr color="red">
+            
+        <label for="capital">Registered Capital Amount(In Million):</label><br>
+        <input type="text" name="capital" class="text-danger" maxlength="20" value="{{object.capital}}" id="id_capital"style="width: 200px";><br>
+        <label for="capital_new">New Capital Amount(In Million)[Optonal]:</label><br>
+        <input type="text" name="capital_new" value="{{object.capital_new}}" id="id_capital_new"style="width: 200px";><br>   
+        <label for="exp_year">Experience Year:</label><br>
+        <input type="text" name="exp_year" value="{{object.exp_year}}" id="exp_year"style="width: 200px";><br> 
+        <label for="pre_sales">Last Year Sales(In Million):</label><br>
+        <input type="text" name="pre_sales" value="{{object.pre_sales}}" id="pre_sales"style="width: 200px";><br>
+        <label for="pre_networth">Last Year Networth(In Million):</label><br>
+        <input type="text" name="pre_networth" value="{{object.pre_networth}}" id="pre_networth"style="width: 200px";><br>
+        <label for="cur_sales">Current Year Sales(In Million):</label><br>
+        <input type="text" name="cur_sales" value="{{object.cur_sales}}" id="cur_sales"style="width: 200px";><br>
+        <label for="cur_networth">Current Year Networth(In Million):</label><br>
+        <input type="text" name="cur_networth" value="{{object.cur_networth}}" id="cur_networth"style="width: 200px";><br>
+      </div>
+
+      <div class="col">
+        <p class="text-center text-danger mt-2">Nature of Business/Items</p>
+            <hr color="red">
+         
+            <label for="firm_type">Firm Nature:</label><br>
+            <select value="{{object.firm_type}}" id="firm_type" name="firm_type">
+              <option value="Sole Propreitorship">Sole Propreitorship</option>
+              <option value="Private Limited">Private Limited</option>
+              <option value="Corporation">Corporation</option>
+              <option value="Partnership">Partnership</option>
+              <option value="Limited Liability Company">Limited Liability Company</option>
+            </select>
+            <br>                                    
+            <label for="Business_type">Business Type:</label><br>
+            <input type="text" name="business_type"  maxlength="200" value="{{object.business_type}}" id="Business_type"style="width: 200px";> <br>                          
+            <label for="product">Product:</label><br>
+            <input type="text" name="product"  maxlength="100" value="{{object.product}}" id="product"style="width: 200px";><br>                 
+            <label for="product_types">Product Types:</label><br>
+            <input type="text" name="product_types"  maxlength="100" value="{{object.product_types}}" id="product_types"style="width: 200px";><br>                 
+            <label for="brand">Brand (Optional):</label><br>
+            <input type="text" name="brand"  maxlength="50" value="{{object.brand}}" id="brand"style="width: 200px";><br>                   
+            <label for="brand_types">Brand Products (Optional):</label><br>
+            <input type="text" name="brand_types"  maxlength="100" value="{{object.brand_types}}" id="brand_types"style="width: 200px";><br>   
+             
+      </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-success">
+    </form>
+</div>
+
+
+                                           
+{% endblock bodycontent %}

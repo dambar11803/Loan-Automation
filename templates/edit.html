@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} AddClient {% endblock title %}
+{% block css %}  <link rel="stylesheet" href="{% static 'css/add_client.css' %} "> {% endblock css %}
+
+{% block bodycontent %}
+
+    <div class="container my-4">
+        <form class="row g-3"action="{% url 'client_update' client.id %}" method="post">
+            {% csrf_token %} 
+        <div class="row border border-primary">
+          <div class="col mb-3">
+            <p class="text-center text-danger mt-2">Borrower/Location/Establishment</p>
+                <hr color="red">
+            <label for="id_name">Name of Firm:</label><br>
+            <input type="text" name="name" value="" class="" maxlength="300"  id="id_name" style="width: 200px";><br>
+            <label for="id_pro_name">Name of Proprietor:</label><br>
+            <input type="text" name="pro_name" maxlength="200"  id="id_pro_name" style="width: 200px";> <br>
+            <label for="id_address">Address of Firm:</label> <br>
+            <input type="text" name="address" class="" maxlength="150"  id="id_address" style="width: 200px";>  <br>                      
+            <label for="id_iro_address">PAN Registered Location:</label><br>
+            <input type="text" name="iro_address" class="" maxlength="50"  id="id_iro_address"style="width: 200px";><br>
+            <label for="id_iro_date">PAN Registered Date:</label><br>
+            <input type="text" name="iro_date" class="" maxlength="15"  id="id_iro_date"style="width: 200px";><br>
+            <label for="id_smi_address">Gharelu Registered Location:</label><br>
+            <input type="text" name="smi_address" class="" maxlength="150"  id="id_smi_address"style="width: 200px";><br>          
+            <label for="id_smi_date">Gharelu Registered date:</label><br>
+            <input type="text" name="smi_date" class="" maxlength="15"  id="id_smi_date"style="width: 200px";> <br>                     
+          </div>
+          
+         
+        </div>
+        <input type="submit" value="Submit" class="btn btn-success">
+        </form>
+    </div>
+
+{% endblock bodycontent %}

@@ -1,0 +1,25 @@
+p{
+    font-size: 14px;
+    font-family: "Times New Roman", Times, serif
+}
+
+label{
+    font-size: 13.5px;
+    font-family: "Times New Roman", Times, serif
+}
+
+input, option, select{
+    font-size: 13px;
+    font-family: "Times New Roman", Times, serif;
+    color:#ff5c33;
+    padding-left:4px;
+    float:right;
+    
+}
+
+.submit-btn{
+    width:170px;
+    padding:2px;
+    
+}
+

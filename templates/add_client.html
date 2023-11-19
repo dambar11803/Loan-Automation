@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+  AddClient
+{% endblock title %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/add_client.css' %} " />
+{% endblock css %}
+
+{% block bodycontent %}
+  <div class="container my-4">
+    <form action="" method="POST">
+      {% csrf_token %}
+
+      <div class="row border border-primary p-3">
+        <div class="col mb-3">
+          <p class="text-center text-danger mt-2">Borrower/Location/Establishment</p>
+          <hr color="red" />
+          <p>
+            <label for="id_name">Nam of Firm:</label>
+            <input type="text" name="name" maxlength="300" required id="id_name" />
+          </p>
+          <p>
+            <label for="id_address">Firm Address:</label>
+            <input type="text" name="address" maxlength="150" required id="id_address" />
+          </p>
+          <p>
+            <label for="id_iro_address">Inland Revenue:</label>
+            <input type="text" name="iro_address" maxlength="50" required id="id_iro_address" />
+          </p>
+          <p>
+            <label for="id_iro_date">Inland Revenue Reg. Date:</label>
+            <input type="text" name="iro_date" maxlength="12" required id="id_iro_date" />
+          </p>
+          <p>
+            <label for="id_smi_address">Firm Darta:</label>
+            <input type="text" name="smi_address" maxlength="50" required id="id_smi_address" />
+          </p>
+          <p>
+            <label for="id_smi_date">Firm Darta ate:</label>
+            <input type="text" name="smi_date" maxlength="12" required id="id_smi_date" />
+          </p>
+        </div>
+        <div class="col">
+          <p class="text-center text-danger mt-2">Firm/Business/Detail</p>
+          <hr color="red" />
+          <p>
+            <label for="id_capital">Initial Capital:</label>
+            <input type="text" name="capital" maxlength="20" required id="id_capital" />
+          </p>
+          <p>
+            <label for="id_capital_new">New Capital(Optional):</label>
+            <input type="text" name="capital_new" maxlength="20" id="id_capital_new" />
+          </p>
+          <p>
+            <label for="id_pro_name">Pro. Name:</label>
+            <input type="text" name="pro_name" maxlength="100" required id="id_pro_name" />
+          </p>
+          <p>
+            <label for="id_firm_type">Firm type:</label>
+            <select name="firm_type" required id="id_firm_type">
+              <option value="" selected>---------</option>
+
+              <option value="Sole Prorprietorship">Sole Proprietorship</option>
+
+              <option value="Private Limited">Private Limited</option>
+
+              <option value="Corporation">Corporation</option>
+
+              <option value="Partnership">Partnership</option>
+
+              <option value="Limited Liability Company">Limited Liability Company</option>
+            </select>
+          </p>
+
+          <p>
+            <label for="id_exp_year">Exp year(In Years):</label>
+            <input type="text" name="exp_year" maxlength="5" id="id_exp_year" />
+          </p>
+
+          <p>
+            <label for="id_pre_sales">Previous sales(million):</label>
+            <input type="text" name="pre_sales" maxlength="6" id="id_pre_sales" />
+          </p>
+
+          <p>
+            <label for="id_pre_networth">Previous Networth(million):</label>
+            <input type="text" name="pre_networth" maxlength="6" id="id_pre_networth" />
+          </p>
+        </div>
+        <div class="col">
+          <p class="text-center text-danger mt-2">Nature of Business/Items</p>
+          <hr color="red" />
+
+          <p>
+            <label for="id_cur_sales">Current Sales:</label>
+            <input type="text" name="cur_sales" maxlength="6" id="id_cur_sales" />
+          </p>
+
+          <p>
+            <label for="id_cur_networth">Current Networth:</label>
+            <input type="text" name="cur_networth" maxlength="6" id="id_cur_networth" />
+          </p>
+
+          <p>
+            <label for="id_business_type">Business type:</label>
+            <input type="text" name="business_type" maxlength="100" id="id_business_type" />
+          </p>
+
+          <p>
+            <label for="id_product">Product(Optional):</label>
+            <input type="text" name="product" maxlength="100" id="id_product" />
+          </p>
+
+          <p>
+            <label for="id_product_types">Product types(Optional):</label>
+            <input type="text" name="product_types" maxlength="100" id="id_product_types" />
+          </p>
+
+          <p>
+            <label for="id_brand">Brand(Optional):</label>
+            <input type="text" name="brand" maxlength="100" id="id_brand" />
+          </p>
+
+          <p>
+            <label for="id_brand_types">Brand types(Optional):</label>
+            <input type="text" name="brand_types" maxlength="100" id="id_brand_types" />
+          </p>
+          <input type="submit" class="btn btn-primary submit-btn fs-6" value="Submit" />
+        </div>
+      </div>
+    </form>
+    {% if messages %}
+      {% for message in messages %}
+        <div class="text-center alert alert-{{ message.tags }}" id="msg">
+            {{ message|safe }}
+        </div>
+    {% endfor %}
+{% endif %}
+  </div>
+  <script>
+    var message_ele = document.getElementById("msg");
+        setTimeout(function() {
+        message_ele.style.display = "none";
+      }, 3000);
+
+</script>
+{% endblock %}

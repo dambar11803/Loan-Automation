@@ -1,0 +1,31 @@
+
+
+input, option, select{
+    font-size: 13px;
+    font-family: "Times New Roman", Times, serif;
+    color:#ff5c33;
+    padding-left:4px;
+    
+    
+}
+
+label {
+    display: inline-block;
+    width: 135px;
+    text-align: right;
+    font-size: 14px;
+  }
+
+p{
+    color:black;
+    font-family: "Times New Roman", Times, serif;
+    text-align: justify;
+    font-size:15px;
+    text-align: justify;
+}
+
+input[type=submit]{
+    padding:3px;
+    font-size: 15px;
+    color:red;
+}

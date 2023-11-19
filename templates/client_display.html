@@ -1,0 +1,199 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ClientInfo {% endblock title %}
+{% block css %}  <link rel="stylesheet" href="{% static 'css/client_display.css' %} "> {% endblock css %}
+{% block bodycontent %}
+
+<div class="container py-5">
+    <div class="section1">
+        <h6 class="text-danger"> {{object.name}}(Pro.{{object.pro_name}})</h6>
+        <h6 class="text-danger">Borrower/Location/Establishment</h6>
+    <hr color="red">
+    <div class="border border-primary">
+        <p class="p-3" id="FirmDetail"> 
+            M/S {{object.name }} was established and is located at {{object.address }} with the aim of doing
+             {{object.business_type}} business. {{object.pro_name}} is the sole proprietor of the firm.
+             
+             {% if object.vdc and object.vdc_date %}
+                The firm was first registered in {{object.vdc}} in {{object.vdc_date}} and 
+                has started its initial business.
+    
+             {% endif %}
+    
+             The firm was then registered in Inland Revenue Office, {{ object.iro_address}} 
+             in {{object.iro_date}}. Similary, the firm has started its authorized business after registering 
+             the firm in Department of Cottage and Small Industries, {{object.smi_address}} in {{object.smi_date}}
+             with the capital amount of Rs.{{object.capital}} million. 
+    
+             {% if object.capital_new %}
+                With the increment of business volume, the firm has increases its capital amount to 
+                Rs.{{object.capital_new}} million in order to meet the business demand like to balance the daily business transaction 
+                 and addition of required assets like machines, tools, furniture etc.
+             {% endif %}
+        </p>
+        <button type="button" onclick="FirmDetailCopy()" class="btn btn-warning btn-sm text-sm-end mx-auto">Copy</button>
+       
+        <script>
+            function FirmDetailCopy() {
+                /* Get the text field */
+                var copyText = document.getElementById("FirmDetail");
+    
+                /* Select the text field */
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().removeAllRanges(); // Clear previous selection
+                window.getSelection().addRange(range);
+    
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+    
+                /* Alert the copied text */
+                alert("Paragraph copied to clipboard!");
+            }
+        </script>
+
+    </div>
+
+    </div>
+
+    <!--Start of Section Two-->
+
+    <div class="section1">
+        <h6 class="text-danger mt-3">Proprietors/Promoters/Management</h6>
+        <h6 class="text-danger">Background/Experience/Successors</h6>
+    <hr color="red">
+
+    <div class="border border-danger">
+        <p id ="FirmBackDetail" class="p-3"> 
+            The {{object.name}} firm has started its business with capital amount of Rs.{{object.capital}} million in 
+            {{object.smi_date}} B.S.. Since the establishment, the firm has been operating under the direct supervision 
+            of Mr.{{object.pro_name}}. All the business process, transactions and operational works are performed under 
+            the proprietor's management. Mr.{{object.pro_name}} has a business experience of {{object.exp_year}} years and 
+            has been running business through different business ups and down. Based on the last three years financial 
+            reports, almost all of the financial ratios are in positive way. As a regular and active businessman, 
+            Mr.{{object.pro_name}} has brings the business as far as to the current status through hard work and careful 
+            management. 
+    
+            In the last fiscal year, the total networth and gross sales amount of the firm were Rs.{{object.pre_sales}} million 
+            and Rs.{{object.pre_networth}} million respectively and has expected the business volume having total networth of 
+            Rs.{{object.cur_networth}} million and the total sales of Rs.{{object.cur_sales}} million at the end of current 
+            fiscal year. As a whole, Mr.{{object.pro_name}} has recognized as a renowned businessman with sufficient business 
+            network through long working experience around the Dharan Sub-Metropolitan City. Besides this, the family member 
+            also helps to run the business in both, direct and indirect involvement. The proprietor’s wife and children are 
+            the successor for the business.   
+        </p>
+        <button type="button" onclick="FirmBackCopy()" class="btn btn-warning btn-sm text-sm-end mx-auto">Copy</button>
+       
+        <script>
+            function FirmBackCopy() {
+                /* Get the text field */
+                var copyText = document.getElementById("FirmBackDetail");
+    
+                /* Select the text field */
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().removeAllRanges(); // Clear previous selection
+                window.getSelection().addRange(range);
+    
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+    
+                /* Alert the copied text */
+                alert("Paragraph copied to clipboard!");
+            }
+        </script>
+    </div>
+    </div>
+
+    <!--End of Second Section-->
+
+    <!--Start of Third Section-->
+
+    <div class="section1">
+        <h6 class="text-danger mt-3">Nature of Key Business/Items</h6>
+        <hr color="red">
+        <div class="border border-success">  
+            <p id="FirmNature" class="p-3"> 
+
+                M/S {{object.name}} is a {{object.firm_type}} firm. It is a formal and commercial
+                 business organization, registered to do retail and wholesale business of {{object.business_type}} products. 
+                 The firm has started its business, having an aim to supply, distribute and sell quality 
+                 {{object.business_type}} products in a reasonable price to its customer. The firm has been trading 
+                 {{object.buisness_types}} products like {{object.product_types}} etc. 
+        
+                 {% if object.brand %}
+                 Similarly, the {{object.name}} has been supplying and distributing {{object.brand}} brand products like 
+                 {{object.brand_types}}.
+                 {% endif %}
+               
+            </p>
+            <button type="button" onclick="FirmNatureCopy()" class="btn btn-warning btn-sm text-sm-end mx-auto">Copy</button>
+       
+        <script>
+            function FirmNatureCopy() {
+                /* Get the text field */
+                var copyText = document.getElementById("FirmNature");
+    
+                /* Select the text field */
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().removeAllRanges(); // Clear previous selection
+                window.getSelection().addRange(range);
+    
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+    
+                /* Alert the copied text */
+                alert("Paragraph copied to clipboard!");
+            }
+        </script>
+        </div>
+            
+    
+    </div>
+
+       <!--Start of Third Section-->
+
+     <div class="section1">
+        <h6 class="text-danger mt-3">Character of Client</h6>
+        <hr color="red">
+        <div class="border border-warning">
+            <p id="clientcharacter" class="p-3"> 
+
+                Mr.{{object.pro_name}} is a renowned person possessing polite and good moral character.  
+                He is an experienced businessman as well as renowned personality around the city. 
+                Besides this, he has a good social status and has been engaging in different social 
+                works and programs. In business perspective, he has gained a long business experience and
+                 has developed a right business culture and professionalism through work experienced gained 
+                 skills like good leadership and other managerial skills. As an active and regular businessman,
+                  he has established a good relation with network of different businessess and other expert personnel.
+                  As a whole, Mr.{{object.pro_name}}, proprietor of {{object.name}} possess positive and vibrant character and has high moral character
+                  to facilitate the proposed credit facility.
+            </p>
+            <button type="button" onclick="ClientCharacterCopy()" class="btn btn-warning btn-sm text-sm-end mx-auto">Copy</button>
+       
+        <script>
+            function ClientCharacterCopy() {
+                /* Get the text field */
+                var copyText = document.getElementById("clientcharacter");
+    
+                /* Select the text field */
+                var range = document.createRange();
+                range.selectNode(copyText);
+                window.getSelection().removeAllRanges(); // Clear previous selection
+                window.getSelection().addRange(range);
+    
+                /* Copy the text inside the text field */
+                document.execCommand("copy");
+    
+                /* Alert the copied text */
+                alert("Paragraph copied to clipboard!");
+            }
+        </script>
+        </div>
+
+    
+    </div>
+</div>
+
+{% endblock bodycontent %}

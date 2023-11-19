@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ClientList {% endblock title %}
+
+{% block bodycontent %}
+
+<div class="container text-center">
+ <p>Do you want to Delete?</p>
+ <form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Delete">
+    <a href="{% url 'clientlist' %}">Cancel</a>
+ </form>
+
+</div>
+
+
+
+{% endblock bodycontent %}

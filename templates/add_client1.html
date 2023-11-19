@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} AddClient {% endblock title %}
+{% block css %}  <link rel="stylesheet" href="{% static 'css/add_client.css' %} "> {% endblock css %}
+
+{% block bodycontent %}
+
+    <div class="container my-4">
+       <form action="" method="POST">
+        {% csrf_token %}
+        {{form.as_p}} 
+        <input type="submit" value="Submit">
+    </div>
+
+{% endblock bodycontent %}

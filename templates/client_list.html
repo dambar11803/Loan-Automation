@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} ClientList {% endblock title %}
+{% block css %}
+  <link rel="stylesheet" href="{% static 'css/client_list.css' %} " />
+{% endblock css %}
+{% block bodycontent %}
+
+<div class="container">
+  {% if object_list %}
+    <table class="table">
+        <thead>
+            <th>SN</th>
+            <th>Name of Firm</th>
+            <th>Address</th>
+            <th>Action</th>
+            </tr>
+        </thead>
+    {% for ClientDetail in object_list %}
+     <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{ClientDetail.name}}</td>
+        <td>{{ClientDetail.address}}</td>
+        <td>
+            <a href="{% url 'clientdisplay' ClientDetail.pk %}" class="button bg-primary">View</a>
+            <a href="{% url 'clientupdate' ClientDetail.pk %}" class="button bg-success">Update</a>
+            <a href="{% url 'clientdelete' ClientDetail.pk %}" class="button bg-danger">Delete</a></td>
+     </tr>
+    {% endfor %}
+</table>
+  {% else %}  
+    <h3>No Client has been Added</h3>
+    <a href="{% url 'add_client' %}">Add New Client</a>
+  {% endif %}
+
+</div>
+
+
+
+{% endblock bodycontent %}

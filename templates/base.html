@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% block title %}
+        BasePage
+      {% endblock %}
+    </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"/>
+    {% block css %}  {% endblock css %}
+  </head>
+  <body>
+    <!-- navbar start -->
+    
+            <div class="container-fluid">
+        <div class="row">
+         <div class="row1">
+             <div class="intro-text">
+                 <p class="text-center fs-5 text-danger">Loan Automation System</p>
+             </div>
+         </div>
+         <div class="row2">
+             <ul class="nav justify-content-center d-flex">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'homepage' %}">Homepage</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'add_client' %}">Add Client</a>
+              </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="{% url 'clientlist' %}">Customer List</a>
+                 </li>
+                 <li class="nav-item">
+                   <a class="nav-link" href="{% url 'collateral' %}">Collateral Details</a>
+                 </li>
+               </ul>
+         </div>
+        </div>
+     </div>
+
+    <!-- End of navbar start -->
+
+    <div class="body-section py-6">
+      {% block bodycontent %}
+      <div class="container text-center">
+        <img src="{% static 'images/loan1.jpg' %}" class="img-fluid mt-5" alt="loan automtion">
+
+      </div>
+
+      {% endblock bodycontent %}
+    </div>
+
+    <!--footer section-->
+     
+    {% include 'footer.html' %}
+   
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>

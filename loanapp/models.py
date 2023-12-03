@@ -45,9 +45,9 @@ class Collateral(models.Model):
     valuator= models.CharField(max_length=100)
     distress_amt= models.FloatField(max_length=50)
     margin= models.FloatField(max_length=50)
-    mortgaged_amt= models.CharField(max_length=50, null= True, blank= True)
+    mortgaged_amt= models.FloatField(max_length=50, null= True, blank= True)
     
-    building_value= models.CharField(max_length=5, null=True, blank= True)
+    building_value= models.FloatField(max_length=5, null=True, blank= True)
     building_storey=models.CharField(max_length=10, null=True, blank= True)
     
     def __str__(self):

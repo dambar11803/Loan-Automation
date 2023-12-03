@@ -42,9 +42,8 @@
     </div>
     <div class="col-6 mt-4">
       <p class="text-center text-success fs-6 text-decoration-underline ">Collateral Remarks</p>
-        {% if plot_no %}
-        
-        {% if flag == 1 %}
+       {% if plot_no %} 
+        {% if building_value %}
           <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger"> 
           The proposed collateral land having plot no. {{plot_no}} is registered in the name of M/S 
           {{plot_owner}} and is located at {{plot_add}}. The distress value of this land and a 
@@ -53,18 +52,17 @@
           Rs.{{total_amt}} million according to the valuation report prepared by the registered valuator M/S 
           {{valuator}}. This property has been proposed as a collateral backup, amounting to Rs.{{proposed_amt}} million 
           after allowing {{margin}}% margin on the total distress value. 
-          </p>    
-      
-        {% elif flag != None %}
+          </p>
+
+        {% elif mortgaged_amt %}  
           <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger">   
           The proposed collateral land having plot number {{plot_no}} is registered in the name of M/S {{plot_owner}} 
           and is located at {{plot_add}}. The distress value of this land is Rs.{{distress_amt}} million according to 
           the valuation report prepared by the registered valuator M/S {{valuator}}. This property has been already 
           mortgaged in favor of bank at Rs.{{mortgaged_amt}} million after deducting {{old_margin}}% margin on the total 
-          distress value and shall continue as a security collateral backup.
-          </p>
-
-        {% else %}  
+          distress value and shall continue as a security collateral backup.</p>
+ 
+        {% else %}
           <p id="ColDetail" class="mt-5 border border-primary p-3 border border-danger"> 
           The proposed collateral land having plot number {{plot_no}} is registered in the name of M/S {{plot_owner}} 
           and is located at {{plot_add}}. The distress value of this land is Rs.{{distress_amt}} million according to 
@@ -72,8 +70,14 @@
           favor of bank at Rs.{{proposed_amt}} million after deducting {{margin}}% margin on the total distress value 
           after the approval of proposed credit facility.
           </p>
-      
+       
         {% endif %} 
+
+       {% else %}
+        <p>Enter the Collateral Details</p>
+
+       {% endif %}  
+
         <div class="mx-auto"><button type="button" onclick="ColDetailCopy()" class="btn btn-warning btn-sm mx-auto">Copy</button></div>
         <script>
           function ColDetailCopy() {
@@ -93,9 +97,6 @@
               alert("Paragraph copied to clipboard!");
           }
       </script>
-      {% else %}  
-        <p class="text-center mt-5 text-danger border border-primary p-5">Enter the Collateral details for Collateral Remarks !!!</p>
-      {% endif %}
     </div>
   </div>
 </div>

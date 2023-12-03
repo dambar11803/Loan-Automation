@@ -63,15 +63,15 @@ def CollateralDisplay(request):
             building_value= form.cleaned_data['building_value']
             builidng_storey= form.cleaned_data['building_storey']
             
-            if (building_value):
+            if (building_value and plot_no):
                 total_amt= float(distress_amt) + float(building_value)
                 temp= (100.0-margin)
                 proposed_amt= ((total_amt*temp)/100)
                 proposed_amt= round(proposed_amt,2)
                 flag=True 
             elif (mortgaged_amt):
-                total_amt= distress_amt
-                old_margin= ((mortgaged_amt*100)/distress_amt)
+                total_amt= float(distress_amt)
+                old_margin= float((mortgaged_amt*100)/distress_amt)
                 old_margin= round(old_margin,2)
                 flag=False
             else:
